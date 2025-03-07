@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputPassword = document.getElementById("password");
     const loginButton = document.getElementById("loginButton");
     const toggleText = document.getElementById("toggle-password");
+    const ErrorMassage = document.getElementById("error-message");
 
     let clickCount = 0;
 
@@ -20,16 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({ username, password }),
             });
 
-            if (!response.ok) throw new Error("Ошибка при отправке данных");
-
             const data = await response.json();
-            alert(`Ответ сервера: ${data.message}`);
+            if (!data.error) {
+                window.location.href = data.redirectUrl;
+            } else {
+                ErrorMassage.style.display = "block";
+                ErrorMassage.textContent = data.message;
+            }
         } catch (error) {
-            console.error("Ошибка:", error);
-            alert("Ошибка соединения с сервером");
+            console.error("Ошибка запроса:", error);
         }
     });
 
+    // Переключение видимости пароля
     toggleText.addEventListener("click", function () {
         inputPassword.type = inputPassword.type === "password" ? "text" : "password";
         toggleText.textContent = inputPassword.type === "password" ? "Показать" : "Скрыть";
