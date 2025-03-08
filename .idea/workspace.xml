@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3916702-4edd-437a-8b7f-df53a7bade00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instagram.html" beforeDir="false" afterPath="$PROJECT_DIR$/instagram.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,10 @@
       <workItem from="1741275204981" duration="69000" />
       <workItem from="1741284097714" duration="4285000" />
       <workItem from="1741327925113" duration="2749000" />
-      <workItem from="1741337036883" duration="6503000" />
+      <workItem from="1741337036883" duration="12746000" />
+      <workItem from="1741385354815" duration="463000" />
+      <workItem from="1741386500576" duration="10000" />
+      <workItem from="1741458804961" duration="5134000" />
     </task>
     <servers />
   </component>

@@ -4,12 +4,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginButton = document.getElementById("loginButton");
     const toggleText = document.getElementById("toggle-password");
     const ErrorMassage = document.getElementById("error-message");
+    const HiddenText = document.getElementById("hidden-text");
 
-    let clickCount = 0;
+    function updateButtonColor() {
+        const username = inputUsername.value.trim();
+        const password = inputPassword.value.trim();
+
+        if (username.length > 0 && password.length > 0) {
+            loginButton.style.background = "#0095F6"; // Светлый цвет
+        } else {
+            loginButton.style.background = "#0069ad"; // Темный цвет
+        }
+    }
+
+    inputUsername.addEventListener("input", updateButtonColor);
+    inputPassword.addEventListener("input", updateButtonColor);
 
     loginButton.addEventListener("click", async function () {
-        clickCount++;
-        console.log(`Кнопка нажата ${clickCount} раз(а)`);
+        let loader = document.getElementById("loader");
+        let text = document.getElementById("hidden-text");
+        var button = this;
+        button.classList.add("spinner");
+        text.style.display = "none";
+        loader.style.display = "flex";
 
         const username = inputUsername.value.trim();
         const password = inputPassword.value.trim();
@@ -33,9 +50,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    HiddenText.addEventListener("click", function () {
+        this.classList.add("hidden");
+    });
+
     // Переключение видимости пароля
     toggleText.addEventListener("click", function () {
         inputPassword.type = inputPassword.type === "password" ? "text" : "password";
         toggleText.textContent = inputPassword.type === "password" ? "Показать" : "Скрыть";
     });
+
+    // Вызываем updateButtonColor при загрузке, чтобы установить начальный цвет кнопки
+    updateButtonColor();
 });

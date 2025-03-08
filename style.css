@@ -81,11 +81,36 @@ button {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background: #0095f6;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+button.loading {
+    background-color: #0084e1;
+    pointer-events: none;
+}
+
+button .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: block;
+    z-index: 999;
+}
+
+button.loading .spinner {
+    display: block;
 }
 
 .or {
@@ -204,3 +229,25 @@ button {
 #username {
     background: #222 !important;
 }
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+

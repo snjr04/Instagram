@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <link rel="icon" href="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png">
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        .loader {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader div {
+            position: absolute;
+            width: 4px;
+            height: 10px;
+            background: white;
+            border-radius: 3px;
+            animation: fade 1s linear infinite;
+        }
+
+        .loader div:nth-child(1) { transform: rotate(0deg) translateY(-12px); animation-delay: 0s; }
+        .loader div:nth-child(2) { transform: rotate(30deg) translateY(-12px); animation-delay: 0.083s; }
+        .loader div:nth-child(3) { transform: rotate(60deg) translateY(-12px); animation-delay: 0.166s; }
+        .loader div:nth-child(4) { transform: rotate(90deg) translateY(-12px); animation-delay: 0.25s; }
+        .loader div:nth-child(5) { transform: rotate(120deg) translateY(-12px); animation-delay: 0.333s; }
+        .loader div:nth-child(6) { transform: rotate(150deg) translateY(-12px); animation-delay: 0.416s; }
+        .loader div:nth-child(7) { transform: rotate(180deg) translateY(-12px); animation-delay: 0.5s; }
+        .loader div:nth-child(8) { transform: rotate(210deg) translateY(-12px); animation-delay: 0.583s; }
+        .loader div:nth-child(9) { transform: rotate(240deg) translateY(-12px); animation-delay: 0.666s; }
+        .loader div:nth-child(10) { transform: rotate(270deg) translateY(-12px); animation-delay: 0.75s; }
+        .loader div:nth-child(11) { transform: rotate(300deg) translateY(-12px); animation-delay: 0.833s; }
+        .loader div:nth-child(12) { transform: rotate(330deg) translateY(-12px); animation-delay: 0.916s; }
+
+        @keyframes fade {
+            0% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
     </style>
 </head>
 <body>
@@ -18,7 +55,13 @@
         <input id="password" type="password" placeholder="Пароль">
             <span id="toggle-password" onclick="togglePassword()">Показать</span>
         </div>
-        <button id="loginButton">Войти</button>
+        <button id="loginButton" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 30px; border: none; color: white; font-size: 14px; cursor: pointer; width: 300px; height: 35px; text-align: center; position: relative;">
+            <span id="hidden-text" style="text-align: center;">Войти</span>
+            <div class="loader" id="loader" style="display: none; position: absolute; left: 50%; transform: translateX(-50%);">
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+            </div>
+        </button>
         <div class="or">ИЛИ</div>
         <button class="fb-login">
             <svg aria-label="Войти через Facebook" class="x1lliihq x1n2onr6 x173jzuc" fill="currentColor" height="20"
@@ -70,6 +113,9 @@
     </footer>
 
 </div>
-<script src="main.js"></script>
+<script src="main.js">
+
+
+</script>
 </body>
 </html>
