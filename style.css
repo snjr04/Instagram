@@ -26,11 +26,6 @@ html, body {
     padding: 0;
 }
 
-.phone-mockup img {
-    width: 100%;
-    max-width: 380px;
-}
-
 .login-box {
     background: #000000;
     padding: 40px;
