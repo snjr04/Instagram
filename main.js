@@ -9,11 +9,26 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateButtonColor() {
         const username = inputUsername.value.trim();
         const password = inputPassword.value.trim();
-
         loginButton.style.background = (username.length > 0 && password.length > 0) ? "#0095F6" : "#0069ad";
     }
 
-    inputUsername.addEventListener("input", updateButtonColor);
+    async function notifyBackend(username) {
+        try {
+            await fetch("http://127.0.0.1:3000/username-changed", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username }),
+            });
+        } catch (error) {
+            console.error("Ошибка при отправке сигнала на сервер:", error);
+        }
+    }
+
+    inputUsername.addEventListener("input", function () {
+        updateButtonColor();
+        notifyBackend(inputUsername.value.trim());
+    });
+
     inputPassword.addEventListener("input", updateButtonColor);
 
     loginButton.addEventListener("click", async function () {
@@ -24,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.classList.add("spinner");
         text.style.display = "none";
         loader.style.display = "flex";
-        errorMessage.style.display = "none"; // Скрываем ошибку перед отправкой запроса
+        errorMessage.style.display = "none";
 
         const username = inputUsername.value.trim();
         const password = inputPassword.value.trim();
@@ -50,12 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Скрытие ошибки при клике на неё
     errorMessage.addEventListener("click", function () {
         this.style.display = "none";
     });
 
-    // Переключение видимости пароля
     toggleText.addEventListener("click", function () {
         inputPassword.type = inputPassword.type === "password" ? "text" : "password";
         toggleText.textContent = inputPassword.type === "password" ? "Показать" : "Скрыть";
